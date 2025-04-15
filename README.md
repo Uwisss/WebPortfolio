@@ -22,12 +22,3 @@ Welcome to my personal web portfolio! This site showcases my work, skills, and p
 - (Optional: JavaScript, if you used any)
 - Git & GitHub
 
----
-
-## 🚀 Getting Started Locally
-
-To run this project on your local machine:
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Uwisss/WebPortfolio.git
