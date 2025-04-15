@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="icon" type="image/x-icon" href="../img/owes.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="projects.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <!-- Modal Gallery -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close">&times;</span>
+        <div class="modal-content">
+            <div class="modal-navigation">
+                <button class="modal-prev">&#10094;</button>
+                <button class="modal-next">&#10095;</button>
+            </div>
+            <img id="modalImage" src="" alt="Project Screenshot">
+            <div class="modal-caption"></div>
+        </div>
+    </div>
+
+    <header class="site-header" role="banner">
+        <nav class="container" role="navigation" aria-label="Main navigation">
+            <a href="../index.html" class="logo" aria-label="Home">OWES</a>
+            <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="main-nav" role="menu">
+                <li role="none"><a href="../index.html" role="menuitem">Home</a></li>
+                <li role="none"><a href="../about/about.html" role="menuitem">About</a></li>
+                <li role="none"><a href="" class="active" aria-current="page" role="menuitem">Projects</a></li>
+                <li role="none"><a href="../quizzes/quizzes.html" role="menuitem">Quizzes</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="projects-page">
+        <section id="projects-hero">
+            <div class="projects-hero-content">
+                <h1 class="projects-title">My Projects</h1>
+                <p class="projects-subtitle">A showcase of my skills and accomplishments.</p>
+            </div>
+        </section>
+
+        <section id="portfolio-overview">
+            <div class="container">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="grid">
+                    <!-- Mobile App Project -->
+                    <article class="project-item">
+                        <div class="project-gallery" data-project="mobile-app">
+                            <img src="../img/CodexLogo2.png" alt="Mobile App Project" class="gallery-trigger">
+                            <!-- Hidden gallery images -->
+                            <div class="gallery-images" style="display: none;">
+                                <img src="../img/CodexMain.jpg" data-caption="Home Screen - Modern UI with intuitive navigation">
+                                <img src="../img/CodexNavs.jpg" data-caption="App Navigation - Choose and explore the application">
+                                <img src="../img/CodexLes.jpg" data-caption="Lesson Preview - Explore basic coding languages">
+                                <img src="../img/CodexMainLes.jpg" data-caption="Main Lesson - Study and explore coding">
+                                <img src="../img/CodexGame.jpg" data-caption="Game Preview - Pick a mini-game">
+                                <img src="../img/CodexMainGame.jpg" data-caption="Mini Game - Test Your Knowledge">
+                                <img src="../img/CodexSettings.jpg" data-caption="User Settings - Personalized experience">
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>CodeXplore</h3>
+                            <p>CodeXplore is your all-in-one mobile coding companion! Learn programming languages like Java through interactive lessons designed for mobile. Practice your knowledge and challenge yourself with a fun quiz mini-game perfect for leveling up your coding skills anytime, anywhere.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">C#</span>
+                                <span class="tech-tag">Xamarin</span>
+                                <span class="tech-tag">SQLite</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-item">
+                        <div class="project-gallery" data-project="mobile-app">
+                            <img src="../img/FandomLogo.png" alt="Mobile App Project" class="gallery-trigger">
+                            <!-- Hidden gallery images -->
+                            <div class="gallery-images" style="display: none;">
+                                <img src="../img/FandomMain.png" data-caption="Home Screen - Modern UI with intuitive navigation">
+                                <img src="../img/FandomCategory.png" data-caption="Feature Overview - Key functionalities at a glance">
+                                <img src="../img/FandomMainContent.png" data-caption="User Profile - Personalized experience">
+                                <img src="../img/FandomNews.png" data-caption="User Profile - Personalized experience">
+                        
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>HxH WebFandom</h3>
+                            <p>A dynamic fan website dedicated to Hunter x Hunter anime/manga series. Features include character profiles, story arcs, news updates, and an interactive community section. Built with responsive design principles for optimal viewing across all devices.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Html</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">JavaSript</span>
+                            </div>
+                        </div>
+                    </article>
+                      <article class="project-item">
+                        <div class="project-gallery" data-project="mobile-app">
+                            <img src="../img/CiscoTopology.png" alt="Mobile App Project" class="gallery-trigger">
+                            <!-- Hidden gallery images -->
+                            <div class="gallery-images" style="display: none;">
+                                <img src="../img/CiscoTopology.png" data-caption="Network Topology - Complete network infrastructure design">
+                                <img src="../img/CiscoMiniature.jpg" data-caption="Physical Setup - Hardware configuration and connections">
+                                <img src="../img/CiscoTest.jpg" data-caption="Testing Phase - Network performance validation">
+                                <img src="../img/CiscoTeam.jpg" data-caption="Team Collaboration - Group implementation process">
+                        
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Cisco Network</h3>
+                            <p>A simple network infrastructure project implementing secure LAN/WAN connectivity, VLAN segmentation, and routing protocols. Designed and simulated using Cisco Packet Tracer.</p>
+                            <div class="project-tech">  
+                                <span class="tech-tag">Cisco Packet Tracer</span>
+                    
+                            </div>
+                        </div>
+                    </article>
+                </div>
+              
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3 class="footer-title">Carl Luis C. Dimapilis</h3>
+                    <p class="footer-tagline">Web Developer & IT Student</p>
+                </div>
+                <div class="footer-social">
+                    <h3 class="footer-title">Connect With Me</h3>
+                    <ul class="social-links">
+                        <li>
+                            <a href="mailto:sc.carlluis.dimapilis@cvsu.edu.ph" target="_blank" aria-label="Email" class="social-link">
+                                <i class="fa fa-envelope"></i>
+                                <span>Email</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/Uwisss" target="_blank" aria-label="GitHub" class="social-link">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/dimapilis-carl-luis-c-66b63631b/" target="_blank" aria-label="LinkedIn" class="social-link">
+                                <i class="fab fa-linkedin"></i>
+                                <span>LinkedIn</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 Carl Luis C. Dimapilis. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const modalCaption = document.querySelector('.modal-caption');
+            const closeBtn = document.querySelector('.modal-close');
+            const prevBtn = document.querySelector('.modal-prev');
+            const nextBtn = document.querySelector('.modal-next');
+            let currentGallery = [];
+            let currentIndex = 0;
+
+            // Function to open modal with image
+            function openModal(imgSrc, caption, gallery) {
+                modal.style.display = 'block';
+                modalImg.src = imgSrc;
+                modalCaption.textContent = caption;
+                currentGallery = gallery;
+                currentIndex = gallery.findIndex(img => img.src === imgSrc);
+                document.body.style.overflow = 'hidden';
+                updateNavigationButtons();
+            }
+
+            // Function to close modal
+            function closeModal() {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+
+            // Function to update navigation buttons
+            function updateNavigationButtons() {
+                prevBtn.style.display = currentIndex > 0 ? 'block' : 'none';
+                nextBtn.style.display = currentIndex < currentGallery.length - 1 ? 'block' : 'none';
+            }
+
+            // Event listeners for gallery triggers
+            document.querySelectorAll('.gallery-trigger').forEach(trigger => {
+                trigger.addEventListener('click', function() {
+                    const galleryContainer = this.closest('.project-gallery');
+                    const galleryImages = Array.from(galleryContainer.querySelectorAll('.gallery-images img'));
+                    openModal(galleryImages[0].src, galleryImages[0].dataset.caption, galleryImages);
+                });
+            });
+
+            // Navigation event listeners
+            prevBtn.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    modalImg.src = currentGallery[currentIndex].src;
+                    modalCaption.textContent = currentGallery[currentIndex].dataset.caption;
+                    updateNavigationButtons();
+                }
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (currentIndex < currentGallery.length - 1) {
+                    currentIndex++;
+                    modalImg.src = currentGallery[currentIndex].src;
+                    modalCaption.textContent = currentGallery[currentIndex].dataset.caption;
+                    updateNavigationButtons();
+                }
+            });
+
+            // Close modal events
+            closeBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeModal();
+                if (e.key === 'ArrowLeft') prevBtn.click();
+                if (e.key === 'ArrowRight') nextBtn.click();
+            });
+        });
+    </script>
+</body>
+
+</html>
