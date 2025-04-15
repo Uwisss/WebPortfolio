@@ -49,9 +49,13 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.5 });
 
-// Modal Gallery Functionality
-let currentImageIndex = 0;
-let galleryImages = [];
+// Project Gallery Variables
+let projectCurrentImageIndex = 0;
+let projectGalleryImages = [];
+
+// Quiz Modal Variables
+let quizCurrentImageIndex = 0;
+let quizGalleryImages = [];
 
 document.addEventListener('DOMContentLoaded', () => {
     // Burger menu functionality
@@ -146,76 +150,134 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(skillsSection);
     }
 
-    const modal = document.getElementById('imageModal');
-    const modalImg = document.getElementById('modalImage');
-    const modalCaption = document.querySelector('.modal-caption');
-    const closeBtn = document.querySelector('.modal-close');
-    const prevBtn = document.querySelector('.modal-prev');
-    const nextBtn = document.querySelector('.modal-next');
+    // Project Gallery Modal
+    const projectModal = document.getElementById('imageModal');
+    if (projectModal) {
+        const modalImg = document.getElementById('modalImage');
+        const modalCaption = projectModal.querySelector('.modal-caption');
+        const closeBtn = projectModal.querySelector('.modal-close');
+        const prevBtn = projectModal.querySelector('.modal-prev');
+        const nextBtn = projectModal.querySelector('.modal-next');
 
-    // Get all gallery triggers
-    const galleryTriggers = document.querySelectorAll('.gallery-trigger');
+        // Get all gallery triggers
+        const galleryTriggers = document.querySelectorAll('.gallery-trigger');
 
-    galleryTriggers.forEach(trigger => {
-        trigger.addEventListener('click', function() {
-            const gallery = this.closest('.project-gallery');
-            const images = gallery.querySelectorAll('.gallery-images img');
-            
-            // Store gallery images for navigation
-            galleryImages = Array.from(images);
-            currentImageIndex = 0;
-            
-            // Show first image
-            showImage(currentImageIndex);
-            modal.style.display = 'block';
+        galleryTriggers.forEach(trigger => {
+            trigger.addEventListener('click', function() {
+                const gallery = this.closest('.project-gallery');
+                const images = gallery.querySelectorAll('.gallery-images img');
+                
+                // Store gallery images for navigation
+                projectGalleryImages = Array.from(images);
+                projectCurrentImageIndex = 0;
+                
+                // Show first image
+                showProjectImage(projectCurrentImageIndex);
+                projectModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
         });
-    });
 
-    // Close modal
-    closeBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
+        // Close modal
+        closeBtn.addEventListener('click', () => {
+            projectModal.style.display = 'none';
+            document.body.style.overflow = '';
+        });
 
-    // Navigation
-    prevBtn.addEventListener('click', () => {
-        currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
-        showImage(currentImageIndex);
-    });
+        // Navigation
+        if (prevBtn && nextBtn) {
+            prevBtn.addEventListener('click', () => {
+                projectCurrentImageIndex = (projectCurrentImageIndex - 1 + projectGalleryImages.length) % projectGalleryImages.length;
+                showProjectImage(projectCurrentImageIndex);
+            });
 
-    nextBtn.addEventListener('click', () => {
-        currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
-        showImage(currentImageIndex);
-    });
-
-    // Close on outside click
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.style.display = 'none';
+            nextBtn.addEventListener('click', () => {
+                projectCurrentImageIndex = (projectCurrentImageIndex + 1) % projectGalleryImages.length;
+                showProjectImage(projectCurrentImageIndex);
+            });
         }
-    });
 
-    // Keyboard navigation
-    document.addEventListener('keydown', (e) => {
-        if (modal.style.display === 'block') {
-            if (e.key === 'ArrowLeft') {
-                currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
-                showImage(currentImageIndex);
-            } else if (e.key === 'ArrowRight') {
-                currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
-                showImage(currentImageIndex);
-            } else if (e.key === 'Escape') {
-                modal.style.display = 'none';
+        // Close on outside click
+        projectModal.addEventListener('click', (e) => {
+            if (e.target === projectModal) {
+                projectModal.style.display = 'none';
+                document.body.style.overflow = '';
             }
+        });
+    }
+
+    // Quiz Modal Functionality
+    const quizModal = document.getElementById('quizModal');
+    if (quizModal) {
+        const modalQuizImg = document.getElementById('modalQuizImage');
+        const modalQuizCaption = quizModal.querySelector('.modal-caption');
+        const closeQuizBtn = quizModal.querySelector('.modal-close');
+        const quizPreviews = document.querySelectorAll('.quiz-paper-preview');
+
+        // Open modal when clicking on quiz paper preview
+        quizPreviews.forEach(preview => {
+            preview.addEventListener('click', function() {
+                const img = this.querySelector('img');
+                const quizItem = this.closest('.quiz-item');
+                const quizTitle = quizItem.querySelector('h3').textContent;
+                const quizScore = quizItem.querySelector('.quiz-score').textContent;
+                
+                modalQuizImg.src = img.src;
+                modalQuizCaption.textContent = `${quizTitle} - ${quizScore}`;
+                quizModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close modal when clicking close button
+        closeQuizBtn.addEventListener('click', () => {
+            quizModal.style.display = 'none';
+            document.body.style.overflow = '';
+        });
+
+        // Close modal when clicking outside
+        quizModal.addEventListener('click', (e) => {
+            if (e.target === quizModal) {
+                quizModal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        });
+    }
+
+    // Global keyboard navigation for both modals
+    document.addEventListener('keydown', (e) => {
+        const projectModal = document.getElementById('imageModal');
+        const quizModal = document.getElementById('quizModal');
+
+        if (projectModal && projectModal.style.display === 'block') {
+            if (e.key === 'ArrowLeft') {
+                projectCurrentImageIndex = (projectCurrentImageIndex - 1 + projectGalleryImages.length) % projectGalleryImages.length;
+                showProjectImage(projectCurrentImageIndex);
+            } else if (e.key === 'ArrowRight') {
+                projectCurrentImageIndex = (projectCurrentImageIndex + 1) % projectGalleryImages.length;
+                showProjectImage(projectCurrentImageIndex);
+            } else if (e.key === 'Escape') {
+                projectModal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        } else if (quizModal && quizModal.style.display === 'block' && e.key === 'Escape') {
+            quizModal.style.display = 'none';
+            document.body.style.overflow = '';
         }
     });
 });
 
-function showImage(index) {
+// Separate function for project image display
+function showProjectImage(index) {
     const modalImg = document.getElementById('modalImage');
-    const modalCaption = document.querySelector('.modal-caption');
-    const image = galleryImages[index];
+    const modalCaption = document.querySelector('#imageModal .modal-caption');
+    const image = projectGalleryImages[index];
     
-    modalImg.src = image.src;
-    modalImg.alt = image.alt;
-    modalCaption.textContent = image.dataset.caption;
+    if (modalImg && image) {
+        modalImg.src = image.src;
+        modalImg.alt = image.alt;
+        if (modalCaption && image.dataset.caption) {
+            modalCaption.textContent = image.dataset.caption;
+        }
+    }
 }
