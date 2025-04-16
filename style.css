@@ -1934,7 +1934,7 @@ a:hover {
 }
 
 .about-intro p {
-    color: #f4f4f4 !important;
+    color: var(--text-color) !important;
     font-size: clamp(1rem, 2.5vw, 1.2rem);
     line-height: 1.8;
     max-width: 800px;
