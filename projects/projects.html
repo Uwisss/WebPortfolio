@@ -17,16 +17,18 @@
 </head>
 
 <body>
-    <!-- Modal Gallery -->
+    <!-- Project Modal -->
     <div id="imageModal" class="modal">
-        <span class="modal-close">&times;</span>
-        <div class="modal-content">
-            <div class="modal-navigation">
-                <button class="modal-prev">&#10094;</button>
-                <button class="modal-next">&#10095;</button>
+        <div class="modal__container">
+            <button class="modal__close">&times;</button>
+            <div class="modal__image-wrapper">
+                <img src="" alt="" class="modal__image">
             </div>
-            <img id="modalImage" src="" alt="Project Screenshot">
-            <div class="modal-caption"></div>
+            <div class="modal__nav">
+                <button class="modal__nav-button modal__nav-button--prev">&lt;</button>
+                <button class="modal__nav-button modal__nav-button--next">&gt;</button>
+            </div>
+            <div class="modal__caption"></div>
         </div>
     </div>
 
@@ -108,10 +110,77 @@
                     </article>
                       <article class="project-item">
                         <div class="project-gallery" data-project="mobile-app">
-                            <img src="../img/CiscoMain.png" alt="Mobile App Project" class="gallery-trigger">
+                            <img src="../img/CiscoTopology.png" alt="Mobile App Project" class="gallery-trigger">
                             <!-- Hidden gallery images -->
                             <div class="gallery-images" style="display: none;">
-                                <img src="../img/CiscoMain.png" data-caption="Network Topology - Complete network infrastructure design">
+                                <img src="../img/CiscoTopology.png" data-caption="Network Topology - Complete network infrastructure design">
+                                <img src="../img/CiscoMiniature.jpg" data-caption="Physical Setup - Hardware configuration and connections">
+                                <img src="../img/CiscoTest.jpg" data-caption="Testing Phase - Network performance validation">
+                                <img src="../img/CiscoTeam.jpg" data-caption="Team Collaboration - Group implementation process">
+                        
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Cisco Network</h3>
+                            <p>A simple network infrastructure project implementing secure LAN/WAN connectivity, VLAN segmentation, and routing protocols. Designed and simulated using Cisco Packet Tracer.</p>
+                            <div class="project-tech">  
+                                <span class="tech-tag">Cisco Packet Tracer</span>
+                    
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-item">
+                        <div class="project-gallery" data-project="mobile-app">
+                            <img src="../img/CodexLogo2.png" alt="Mobile App Project" class="gallery-trigger">
+                            <!-- Hidden gallery images -->
+                            <div class="gallery-images" style="display: none;">
+                                <img src="../img/CodexMain.jpg" data-caption="Home Screen - Modern UI with intuitive navigation">
+                                <img src="../img/CodexNavs.jpg" data-caption="App Navigation - Choose and explore the application">
+                                <img src="../img/CodexLes.jpg" data-caption="Lesson Preview - Explore basic coding languages">
+                                <img src="../img/CodexMainLes.jpg" data-caption="Main Lesson - Study and explore coding">
+                                <img src="../img/CodexGame.jpg" data-caption="Game Preview - Pick a mini-game">
+                                <img src="../img/CodexMainGame.jpg" data-caption="Mini Game - Test Your Knowledge">
+                                <img src="../img/CodexSettings.jpg" data-caption="User Settings - Personalized experience">
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>CodeXplore</h3>
+                            <p>CodeXplore is your all-in-one mobile coding companion! Learn programming languages like Java through interactive lessons designed for mobile. Practice your knowledge and challenge yourself with a fun quiz mini-game perfect for leveling up your coding skills anytime, anywhere.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">C#</span>
+                                <span class="tech-tag">Xamarin</span>
+                                <span class="tech-tag">SQLite</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-item">
+                        <div class="project-gallery" data-project="mobile-app">
+                            <img src="../img/FandomLogo.png" alt="Mobile App Project" class="gallery-trigger">
+                            <!-- Hidden gallery images -->
+                            <div class="gallery-images" style="display: none;">
+                                <img src="../img/FandomMain.png" data-caption="Home Screen - Modern UI with intuitive navigation">
+                                <img src="../img/FandomCategory.png" data-caption="Feature Overview - Key functionalities at a glance">
+                                <img src="../img/FandomMainContent.png" data-caption="User Profile - Personalized experience">
+                                <img src="../img/FandomNews.png" data-caption="User Profile - Personalized experience">
+                        
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>HxH WebFandom</h3>
+                            <p>A dynamic fan website dedicated to Hunter x Hunter anime/manga series. Features include character profiles, story arcs, news updates, and an interactive community section. Built with responsive design principles for optimal viewing across all devices.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Html</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">JavaSript</span>
+                            </div>
+                        </div>
+                    </article>
+                      <article class="project-item">
+                        <div class="project-gallery" data-project="mobile-app">
+                            <img src="../img/CiscoTopology.png" alt="Mobile App Project" class="gallery-trigger">
+                            <!-- Hidden gallery images -->
+                            <div class="gallery-images" style="display: none;">
+                                <img src="../img/CiscoTopology.png" data-caption="Network Topology - Complete network infrastructure design">
                                 <img src="../img/CiscoMiniature.jpg" data-caption="Physical Setup - Hardware configuration and connections">
                                 <img src="../img/CiscoTest.jpg" data-caption="Testing Phase - Network performance validation">
                                 <img src="../img/CiscoTeam.jpg" data-caption="Team Collaboration - Group implementation process">
@@ -128,7 +197,6 @@
                         </div>
                     </article>
                 </div>
-              
             </div>
         </section>
     </main>
