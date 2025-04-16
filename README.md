@@ -17,6 +17,6 @@ Built With
 
 - HTML5
 - CSS3
-- (Optional: JavaScript, if you used any)
+- JavaScript
 - Git & GitHub
 
