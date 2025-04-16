@@ -142,6 +142,11 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
 }
 
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--secondary-color);
+}
+
 /* Hero Section */
 #hero {
     min-height: calc(100vh - var(--header-height));
@@ -186,9 +191,41 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     position: relative;
     display: inline-block;
-    transform: translateY(20px);
-    opacity: 0;
-    animation: fadeInUp 0.8s ease forwards 0.4s;
+    transition: all 0.5s ease;
+}
+
+@keyframes fadeUpOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+}
+
+@keyframes fadeUpIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-title.fade-out {
+    animation: fadeUpOut 0.5s ease forwards;
+}
+
+.hero-title.fade-in {
+    animation: fadeUpIn 0.5s ease forwards;
+}
+
+.hero-title::after {
+    display: none;
 }
 
 .hero-subtitle {
@@ -429,8 +466,168 @@ h1, h2, h3, h4, h5, h6 {
 .mb-1 { margin-bottom: 1rem; }
 .mb-2 { margin-bottom: 2rem; }
 
-/* Base Modal Styles */
+/* Modal Styles */
 .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal.show {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal__container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal__image-wrapper {
+    position: relative;
+    max-width: 90%;
+    max-height: calc(90vh - 100px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal__image {
+    max-width: 100%;
+    max-height: calc(90vh - 100px);
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.modal__nav {
+    position: absolute;
+    bottom: 120px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    z-index: 2;
+}
+
+.modal__nav-button {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.modal__nav-button:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+}
+
+.modal__caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 1001;
+    transition: color 0.3s ease;
+    padding: 5px;
+}
+
+.modal__close:hover {
+    color: #ddd;
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+    .modal__nav {
+        bottom: 100px;
+    }
+
+    .modal__nav-button {
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+    }
+
+    .modal__caption {
+        padding: 12px 15px;
+        min-height: 80px;
+        font-size: 14px;
+    }
+
+    .modal__close {
+        top: 10px;
+        right: 10px;
+        font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .modal__image-wrapper {
+        max-height: calc(90vh - 120px);
+    }
+
+    .modal__nav {
+        bottom: 90px;
+    }
+
+    .modal__nav-button {
+        width: 32px;
+        height: 32px;
+        font-size: 18px;
+    }
+
+    .modal__caption {
+        padding: 10px;
+        min-height: 70px;
+        font-size: 13px;
+    }
+}
+
+/* Base Modal Styles */
+#imageModal.modal {
     display: none;
     position: fixed;
     z-index: 9999;
@@ -439,76 +636,170 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
-/* Project Gallery Modal Styles */
+#imageModal.modal.show {
+    opacity: 1;
+    visibility: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #imageModal .modal-content {
     position: relative;
-    margin: 0;
-    padding: 20px;
     width: 100%;
-    height: 100vh;
+    max-width: 1200px;
+    height: auto;
+    min-height: 60vh;
+    padding: 15px;
+    margin: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box;
 }
 
-#imageModal .modal-navigation {
+#imageModal #modalImage {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 8px;
+    margin: 0 auto;
+}
+
+.modal-navigation {
     position: fixed;
     width: 100%;
-    top: 50%;
     left: 0;
+    top: 50%;
     transform: translateY(-50%);
     display: flex;
     justify-content: space-between;
     padding: 0 20px;
-    z-index: 1001;
     pointer-events: none;
+    z-index: 1001;
 }
 
-#imageModal .modal-prev,
-#imageModal .modal-next {
+.modal-prev,
+.modal-next {
     background: rgba(0, 0, 0, 0.7);
     color: white;
-    padding: 20px;
+    width: 40px;
+    height: 40px;
     border: none;
-    cursor: pointer;
     border-radius: 50%;
-    font-size: 24px;
-    transition: all 0.3s ease;
+    cursor: pointer;
     pointer-events: auto;
-    width: 60px;
-    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 20px;
+    transition: all 0.3s ease;
 }
 
-#imageModal .modal-prev:hover,
-#imageModal .modal-next:hover {
+.modal-prev:hover,
+.modal-next:hover {
     background: rgba(0, 0, 0, 0.9);
     transform: scale(1.1);
 }
 
-#imageModal #modalImage {
-    max-width: 95%;
-    max-height: 85vh;
-    object-fit: contain;
-    border-radius: 10px;
-    margin: auto;
-    display: block;
-    width: auto;
-    height: auto;
+.modal-caption {
+    width: 100%;
+    text-align: center;
+    color: white;
+    padding: 10px;
+    margin-top: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 4px;
 }
 
-/* Portrait Image Specific Styles */
-#imageModal #modalImage[style*="portrait"] {
-    max-width: min(95%, 70vh);
-    height: auto;
-    margin: auto;
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .modal-navigation {
+        position: fixed;
+        bottom: 0;
+        top: auto;
+        transform: none;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 15px 0;
+        justify-content: center;
+        gap: 50px;
+    }
+
+    .modal-prev,
+    .modal-next {
+        width: 35px;
+        height: 35px;
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .modal-caption {
+        position: fixed;
+        bottom: 80px;
+        left: 0;
+        margin: 0;
+        font-size: 14px;
+        padding: 8px;
+        background: rgba(0, 0, 0, 0.7);
+    }
+}
+
+/* Small Mobile Devices (iPhone XR and similar) */
+@media (max-width: 480px) {
+    .modal-navigation {
+        padding: 12px 0;
+        gap: 40px;
+    }
+
+    .modal-prev,
+    .modal-next {
+        width: 32px;
+        height: 32px;
+    }
+
+    #imageModal #modalImage {
+        max-height: calc(100vh - 150px);
+        margin-bottom: 60px;
+    }
+
+    .modal-caption {
+        bottom: 70px;
+        font-size: 13px;
+        padding: 6px;
+    }
+
+    .modal-close {
+        top: 10px;
+        right: 10px;
+        font-size: 24px;
+    }
+}
+
+/* Landscape Mode */
+@media (max-height: 480px) {
+    .modal-navigation {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        bottom: auto;
+        background: none;
+        padding: 0 10px;
+        justify-content: space-between;
+    }
+
+    .modal-caption {
+        bottom: 10px;
+    }
+
+    #imageModal #modalImage {
+        margin-bottom: 0;
+    }
 }
 
 /* Quiz Modal Styles */
@@ -521,6 +812,15 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#quizModal.show {
+    display: block;
+    opacity: 1;
+    visibility: visible;
 }
 
 #quizModal .modal-content {
@@ -555,7 +855,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 35px;
     font-weight: bold;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 10000;
     transition: color 0.3s ease;
 }
 
@@ -580,7 +880,7 @@ h1, h2, h3, h4, h5, h6 {
 
     #quizModal #modalQuizImage {
         max-width: 90%;
-    max-height: 80vh;
+        max-height: 80vh;
     }
 }
 
@@ -682,15 +982,13 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     #imageModal .modal-navigation {
-        width: 100%;
         position: fixed;
         bottom: 60px;
-        top: auto;
-        left: 0;
-        transform: none;
+        width: 100%;
+        display: flex;
         justify-content: center;
         gap: 20px;
-        padding: 0;
+        z-index: 1001;
     }
 
     #imageModal .modal-prev,
@@ -1981,7 +2279,6 @@ a:hover {
     text-align: center;
     padding: 1rem;
     background-color: var(--light-color);
-    margin-bottom: 1rem;
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
@@ -2424,20 +2721,20 @@ a:hover {
 .quiz-paper-preview {
     position: relative;
     width: 100%;
-    height: 200px;
+        height: 200px;
     margin-bottom: 0.75rem;
     cursor: pointer;
     border-radius: 10px;
     overflow: hidden;
     transition: transform 0.3s ease;
-}
+    }
 
 .quiz-paper-preview:hover {
     transform: translateY(-3px);
-}
+    }
 
 .quiz-paper-thumb {
-    width: 100%;
+        width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
@@ -2483,4 +2780,11 @@ a:hover {
 
 .about-intro h3 {
     color: var(--primary-color);
+}
+
+#quizModal .modal__nav,
+#quizModal .modal__nav-button,
+#quizModal .modal__nav-button--prev,
+#quizModal .modal__nav-button--next {
+    display: none !important;
 }
