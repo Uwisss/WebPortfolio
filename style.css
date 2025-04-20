@@ -2788,3 +2788,44 @@ a:hover {
 #quizModal .modal__nav-button--next {
     display: none !important;
 }
+
+/* Projects and Quizzes Animation */
+.project-item,
+.quiz-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.project-item.fade-in,
+.quiz-item.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.projects-hero-content,
+.quizzes-hero-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.projects-hero-content.fade-in,
+.quizzes-hero-content.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger animation delays */
+.project-item:nth-child(1),
+.quiz-item:nth-child(1) { transition-delay: 0.1s; }
+.project-item:nth-child(2),
+.quiz-item:nth-child(2) { transition-delay: 0.2s; }
+.project-item:nth-child(3),
+.quiz-item:nth-child(3) { transition-delay: 0.3s; }
+.project-item:nth-child(4),
+.quiz-item:nth-child(4) { transition-delay: 0.4s; }
+.project-item:nth-child(5),
+.quiz-item:nth-child(5) { transition-delay: 0.5s; }
+.project-item:nth-child(n+6),
+.quiz-item:nth-child(n+6) { transition-delay: 0.6s; }
