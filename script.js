@@ -304,6 +304,46 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.overflow = '';
         }
     });
+
+    // Projects and Quizzes Animation
+    function animateContent() {
+        // Animate hero content
+        const projectsHero = document.querySelector('.projects-hero-content');
+        const quizzesHero = document.querySelector('.quizzes-hero-content');
+        
+        if (projectsHero) {
+            projectsHero.classList.add('fade-in');
+        }
+        if (quizzesHero) {
+            quizzesHero.classList.add('fade-in');
+        }
+
+        // Create intersection observer for project and quiz items
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, {
+            threshold: 0.1, // Trigger when 10% of the item is visible
+            rootMargin: '50px' // Start animation slightly before the item comes into view
+        });
+
+        // Observe project items
+        document.querySelectorAll('.project-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Observe quiz items
+        document.querySelectorAll('.quiz-item').forEach(item => {
+            observer.observe(item);
+        });
+    }
+
+    // Call animation function
+    animateContent();
 });
 
 // Function to center the modal image
