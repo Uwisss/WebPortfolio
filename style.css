@@ -2545,6 +2545,7 @@ a:hover {
 
 .section-title {
     text-align: center;
+    margin-top: 5rem;
     margin-bottom: 2rem;
     position: relative;
 }
