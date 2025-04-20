@@ -1,33 +1,33 @@
-// Typing Animation
-const heroTitle = document.querySelector('.hero-title');
-const textsToType = ['Web Developer', 'Problem Solver', 'Tech Enthusiast', 'IT Student'];
-let textIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-
-function typeText() {
-    const currentText = textsToType[textIndex];
-    
-    if (isDeleting) {
-        heroTitle.textContent = currentText.substring(0, charIndex - 1);
-        charIndex--;
-    } else {
-        heroTitle.textContent = currentText.substring(0, charIndex + 1);
-        charIndex++;
+// Hero Title Animation
+document.addEventListener('DOMContentLoaded', () => {
+    const heroTitle = document.querySelector('.hero-title');
+    if (heroTitle) {
+        const texts = [
+            heroTitle.getAttribute('data-text-1'),
+            heroTitle.getAttribute('data-text-2'),
+            heroTitle.getAttribute('data-text-3')
+        ].filter(Boolean);
+        
+        let currentIndex = 0;
+        
+        function changeText() {
+            heroTitle.classList.add('fade-out');
+            
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % texts.length;
+                heroTitle.textContent = texts[currentIndex];
+                heroTitle.classList.remove('fade-out');
+                heroTitle.classList.add('fade-in');
+                
+                setTimeout(() => {
+                    heroTitle.classList.remove('fade-in');
+                }, 500);
+            }, 500);
+        }
+        
+        setInterval(changeText, 4000);
     }
-
-    if (!isDeleting && charIndex === currentText.length) {
-        isDeleting = true;
-        setTimeout(typeText, 1500); // Pause at end
-    } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        textIndex = (textIndex + 1) % textsToType.length;
-        setTimeout(typeText, 500); // Pause before next word
-    } else {
-        setTimeout(typeText, isDeleting ? 50 : 100);
-    }
-}
-
+});
 
 // Skill Progress Animation
 function animateSkills() {
@@ -49,9 +49,13 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.5 });
 
-// Modal Gallery Functionality
-let currentImageIndex = 0;
-let galleryImages = [];
+// Project Gallery Variables
+let projectCurrentImageIndex = 0;
+let projectGalleryImages = [];
+
+// Quiz Modal Variables
+let quizCurrentImageIndex = 0;
+let quizGalleryImages = [];
 
 document.addEventListener('DOMContentLoaded', () => {
     // Burger menu functionality
@@ -138,84 +142,244 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Start typing animation
-    setTimeout(typeText, 500);
-
     // Observe skills section
     if (skillsSection) {
         observer.observe(skillsSection);
     }
 
-    const modal = document.getElementById('imageModal');
-    const modalImg = document.getElementById('modalImage');
-    const modalCaption = document.querySelector('.modal-caption');
-    const closeBtn = document.querySelector('.modal-close');
-    const prevBtn = document.querySelector('.modal-prev');
-    const nextBtn = document.querySelector('.modal-next');
-
-    // Get all gallery triggers
-    const galleryTriggers = document.querySelectorAll('.gallery-trigger');
-
-    galleryTriggers.forEach(trigger => {
-        trigger.addEventListener('click', function() {
-            const gallery = this.closest('.project-gallery');
-            const images = gallery.querySelectorAll('.gallery-images img');
+    // Project Modal Functionality
+    const projectModal = document.getElementById('imageModal');
+    if (projectModal) {
+        const projectImage = projectModal.querySelector('.modal__image');
+        const projectCaption = projectModal.querySelector('.modal__caption');
+        const projectCloseButton = projectModal.querySelector('.modal__close');
+        const projectPrevButton = projectModal.querySelector('.modal__nav-button--prev');
+        const projectNextButton = projectModal.querySelector('.modal__nav-button--next');
+        
+        let projectCurrentIndex = 0;
+        let projectGalleryImages = [];
+        
+        // Function to show project image
+        function showProjectImage(index) {
+            projectImage.src = projectGalleryImages[index].src;
+            projectImage.alt = projectGalleryImages[index].alt;
+            projectCaption.textContent = projectGalleryImages[index].dataset.caption || projectGalleryImages[index].alt;
+            projectCurrentIndex = index;
             
-            // Store gallery images for navigation
-            galleryImages = Array.from(images);
-            currentImageIndex = 0;
-            
-            // Show first image
-            showImage(currentImageIndex);
-            modal.style.display = 'block';
+            // Update navigation button states
+            projectPrevButton.style.display = index === 0 ? 'none' : 'block';
+            projectNextButton.style.display = index === projectGalleryImages.length - 1 ? 'none' : 'block';
+        }
+        
+        // Open project modal
+        document.querySelectorAll('.gallery-trigger').forEach((trigger) => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                const gallery = e.target.closest('.project-gallery');
+                projectGalleryImages = Array.from(gallery.querySelectorAll('.gallery-images img'));
+                projectCurrentIndex = 0;
+                
+                showProjectImage(projectCurrentIndex);
+                projectModal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            });
         });
-    });
-
-    // Close modal
-    closeBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
-
-    // Navigation
-    prevBtn.addEventListener('click', () => {
-        currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
-        showImage(currentImageIndex);
-    });
-
-    nextBtn.addEventListener('click', () => {
-        currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
-        showImage(currentImageIndex);
-    });
-
-    // Close on outside click
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.style.display = 'none';
+        
+        // Close project modal
+        function closeProjectModal() {
+            projectModal.classList.remove('show');
+            document.body.style.overflow = '';
         }
-    });
-
-    // Keyboard navigation
-    document.addEventListener('keydown', (e) => {
-        if (modal.style.display === 'block') {
-            if (e.key === 'ArrowLeft') {
-                currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
-                showImage(currentImageIndex);
-            } else if (e.key === 'ArrowRight') {
-                currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
-                showImage(currentImageIndex);
-            } else if (e.key === 'Escape') {
-                modal.style.display = 'none';
+        
+        projectCloseButton.addEventListener('click', closeProjectModal);
+        projectModal.addEventListener('click', (e) => {
+            if (e.target === projectModal) {
+                closeProjectModal();
             }
+        });
+        
+        // Project navigation
+        projectPrevButton.addEventListener('click', () => {
+            if (projectCurrentIndex > 0) {
+                showProjectImage(projectCurrentIndex - 1);
+            }
+        });
+        
+        projectNextButton.addEventListener('click', () => {
+            if (projectCurrentIndex < projectGalleryImages.length - 1) {
+                showProjectImage(projectCurrentIndex + 1);
+            }
+        });
+        
+        // Project keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!projectModal.classList.contains('show')) return;
+            
+            if (e.key === 'Escape') {
+                closeProjectModal();
+            } else if (e.key === 'ArrowLeft' && projectCurrentIndex > 0) {
+                showProjectImage(projectCurrentIndex - 1);
+            } else if (e.key === 'ArrowRight' && projectCurrentIndex < projectGalleryImages.length - 1) {
+                showProjectImage(projectCurrentIndex + 1);
+            }
+        });
+    }
+
+    // Quiz Modal Functionality
+    const quizModal = document.getElementById('quizModal');
+    if (quizModal) {
+        const quizImage = quizModal.querySelector('.modal__image');
+        const quizCaption = quizModal.querySelector('.modal__caption');
+        const quizCloseButton = quizModal.querySelector('.modal__close');
+        
+        // Function to show quiz image
+        function showQuizImage(image) {
+            quizImage.src = image.src;
+            quizImage.alt = image.alt;
+            const quizItem = image.closest('.quiz-item');
+            const quizTitle = quizItem.querySelector('h3').textContent;
+            const quizScore = quizItem.querySelector('.quiz-score').textContent;
+            const quizGrade = quizItem.querySelector('.quiz-grade').textContent;
+            quizCaption.textContent = `${quizTitle} - ${quizGrade} - ${quizScore}`;
+        }
+        
+        // Open quiz modal
+        document.querySelectorAll('.quiz-paper-preview').forEach((preview) => {
+            preview.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const thumbImage = preview.querySelector('.quiz-paper-thumb');
+                showQuizImage(thumbImage);
+                quizModal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        // Close quiz modal
+        function closeQuizModal() {
+            quizModal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+        
+        quizCloseButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            closeQuizModal();
+        });
+
+        quizModal.addEventListener('click', (e) => {
+            if (e.target === quizModal) {
+                closeQuizModal();
+            }
+        });
+        
+        // Quiz keyboard navigation (only Escape to close)
+        document.addEventListener('keydown', (e) => {
+            if (!quizModal.classList.contains('show')) return;
+            
+            if (e.key === 'Escape') {
+                closeQuizModal();
+            }
+        });
+    }
+
+    // Global keyboard navigation for both modals
+    document.addEventListener('keydown', (e) => {
+        const projectModal = document.getElementById('imageModal');
+        const quizModal = document.getElementById('quizModal');
+
+        if (projectModal && projectModal.style.display === 'block') {
+            if (e.key === 'ArrowLeft') {
+                projectCurrentImageIndex = (projectCurrentImageIndex - 1 + projectGalleryImages.length) % projectGalleryImages.length;
+                showProjectImage(projectCurrentImageIndex);
+            } else if (e.key === 'ArrowRight') {
+                projectCurrentImageIndex = (projectCurrentImageIndex + 1) % projectGalleryImages.length;
+                showProjectImage(projectCurrentImageIndex);
+            } else if (e.key === 'Escape') {
+                projectModal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        } else if (quizModal && quizModal.style.display === 'block' && e.key === 'Escape') {
+            quizModal.style.display = 'none';
+            document.body.style.overflow = '';
         }
     });
+
+    // Projects and Quizzes Animation
+    function animateContent() {
+        // Animate hero content
+        const projectsHero = document.querySelector('.projects-hero-content');
+        const quizzesHero = document.querySelector('.quizzes-hero-content');
+        
+        if (projectsHero) {
+            projectsHero.classList.add('fade-in');
+        }
+        if (quizzesHero) {
+            quizzesHero.classList.add('fade-in');
+        }
+
+        // Create intersection observer for project and quiz items
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, {
+            threshold: 0.1, // Trigger when 10% of the item is visible
+            rootMargin: '50px' // Start animation slightly before the item comes into view
+        });
+
+        // Observe project items
+        document.querySelectorAll('.project-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Observe quiz items
+        document.querySelectorAll('.quiz-item').forEach(item => {
+            observer.observe(item);
+        });
+    }
+
+    // Call animation function
+    animateContent();
 });
 
-function showImage(index) {
-    const modalImg = document.getElementById('modalImage');
-    const modalCaption = document.querySelector('.modal-caption');
-    const image = galleryImages[index];
+// Function to center the modal image
+function centerModalImage(modalImg) {
+    if (!modalImg || !modalImg.complete) return;
     
-    modalImg.src = image.src;
-    modalImg.alt = image.alt;
-    modalCaption.textContent = image.dataset.caption;
+    const viewportHeight = window.innerHeight;
+    const viewportWidth = window.innerWidth;
+    const imageRatio = modalImg.naturalWidth / modalImg.naturalHeight;
+    const isPortrait = modalImg.naturalHeight > modalImg.naturalWidth;
+    
+    modalImg.setAttribute('data-orientation', isPortrait ? 'portrait' : 'landscape');
+    
+    if (window.innerWidth <= 480) { // Mobile devices
+        if (isPortrait) {
+            modalImg.style.maxWidth = 'min(95%, 80vh)';
+            modalImg.style.maxHeight = '75vh';
+        } else {
+            modalImg.style.maxWidth = '98%';
+            modalImg.style.maxHeight = '70vh';
+        }
+    } else if (window.innerWidth <= 768) { // Tablets
+        if (isPortrait) {
+            modalImg.style.maxWidth = 'min(90%, 70vh)';
+            modalImg.style.maxHeight = '80vh';
+        } else {
+            modalImg.style.maxWidth = '95%';
+            modalImg.style.maxHeight = '75vh';
+        }
+    } else { // Desktop
+        if (isPortrait) {
+            modalImg.style.maxWidth = 'min(85%, 60vh)';
+            modalImg.style.maxHeight = '85vh';
+        } else {
+            modalImg.style.maxWidth = '90%';
+            modalImg.style.maxHeight = '80vh';
+        }
+    }
 }

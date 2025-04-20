@@ -16,6 +16,20 @@
 </head>
 
 <body>
+    <!-- Quiz Modal -->
+    <div id="quizModal" class="modal">
+        <div class="modal__container">
+            <button class="modal__close">&times;</button>
+            <div class="modal__image-wrapper">
+                <img src="" alt="" class="modal__image">
+            </div>
+            <div class="modal__nav">
+                <button class="modal__nav-button modal__nav-button--prev">&lt;</button>
+                <button class="modal__nav-button modal__nav-button--next">&gt;</button>
+            </div>
+            <div class="modal__caption"></div>
+        </div>
+    </div>
 
     <header class="site-header" role="banner">
         <nav class="container" role="navigation" aria-label="Main navigation">
@@ -52,7 +66,13 @@
                             <span class="quiz-grade">Grade: A+</span>
                         </div>
                         <div class="quiz-content">
-                            <p class="quiz-description">Comprehensive assessment of JavaScript core concepts including variables, functions, objects, and DOM manipulation.</p>
+                            <div class="quiz-paper-preview">
+                                <img src="../img/brawls.jpg" alt="JavaScript Quiz Paper" class="quiz-paper-thumb">
+                                <div class="preview-overlay">
+                                    
+                                    <span>View</span>
+                                </div>
+                            </div>
                             <div class="quiz-meta">
                                 <span class="quiz-date">Completed: January 2024</span>
                                 <span class="quiz-score">Score: 95/100</span>
@@ -66,21 +86,147 @@
                             <span class="quiz-grade">Grade: A</span>
                         </div>
                         <div class="quiz-content">
-                            <p class="quiz-description">Assessment covering HTML5, CSS3, and responsive design principles for modern web development.</p>
+                            <div class="quiz-paper-preview">
+                                <img src="../img/steam.jpg" alt="Web Development Quiz Paper" class="quiz-paper-thumb">
+                                <div class="preview-overlay">
+                                   
+                                    <span>View</span>
+                                </div>
+                            </div>
                             <div class="quiz-meta">
                                 <span class="quiz-date">Completed: December 2023</span>
                                 <span class="quiz-score">Score: 90/100</span>
                             </div>
                         </div>
                     </article>
-
+                    <article class="quiz-item">
+                        <div class="quiz-header">
+                            <h3>Web Development Basics</h3>
+                            <span class="quiz-grade">Grade: A</span>
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-paper-preview">
+                                <img src="../img/csgo.jpg" alt="Web Development Quiz Paper" class="quiz-paper-thumb">
+                                <div class="preview-overlay">
+                                   
+                                    <span>View</span>
+                                </div>
+                            </div>
+                            <div class="quiz-meta">
+                                <span class="quiz-date">Completed: December 2023</span>
+                                <span class="quiz-score">Score: 90/100</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="quiz-item">
+                        <div class="quiz-header">
+                            <h3>Web Development Basics</h3>
+                            <span class="quiz-grade">Grade: A</span>
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-paper-preview">
+                                <img src="../img/steam.jpg" alt="Web Development Quiz Paper" class="quiz-paper-thumb">
+                                <div class="preview-overlay">
+                                    
+                                    <span>View</span>
+                                </div>
+                            </div>
+                            <div class="quiz-meta">
+                                <span class="quiz-date">Completed: December 2023</span>
+                                <span class="quiz-score">Score: 90/100</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="quiz-item">
+                        <div class="quiz-header">
+                            <h3>Web Development Basics</h3>
+                            <span class="quiz-grade">Grade: A</span>
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-paper-preview">
+                                <img src="../img/valo.jpg" alt="Web Development Quiz Paper" class="quiz-paper-thumb">
+                                <div class="preview-overlay">
+                                    
+                                    <span>View</span>
+                                </div>
+                            </div>
+                            <div class="quiz-meta">
+                                <span class="quiz-date">Completed: December 2023</span>
+                                <span class="quiz-score">Score: 90/100</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="quiz-item">
+                        <div class="quiz-header">
+                            <h3>Web Development Basics</h3>
+                            <span class="quiz-grade">Grade: A</span>
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-paper-preview">
+                                <img src="../img/lol.jpg" alt="Web Development Quiz Paper" class="quiz-paper-thumb">
+                                <div class="preview-overlay">
+                                   
+                                    <span>View</span>
+                                </div>
+                            </div>
+                            <div class="quiz-meta">
+                                <span class="quiz-date">Completed: December 2023</span>
+                                <span class="quiz-score">Score: 90/100</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="quiz-item">
+                        <div class="quiz-header">
+                            <h3>Web Development Basics</h3>
+                            <span class="quiz-grade">Grade: A</span>
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-paper-preview">
+                                <img src="../img/c++.jpg" alt="Web Development Quiz Paper" class="quiz-paper-thumb">
+                                <div class="preview-overlay">
+                                   
+                                    <span>Click to view</span>
+                                </div>
+                            </div>
+                            <div class="quiz-meta">
+                                <span class="quiz-date">Completed: December 2023</span>
+                                <span class="quiz-score">Score: 90/100</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="quiz-item">
+                        <div class="quiz-header">
+                            <h3>Web Development Basics</h3>
+                            <span class="quiz-grade">Grade: A</span>
+                        </div>
+                        <div class="quiz-content">
+                            <div class="quiz-paper-preview">
+                                <img src="../img/Csharp.jpeg" alt="Web Development Quiz Paper" class="quiz-paper-thumb">
+                                <div class="preview-overlay">
+                                   
+                                    <span>View</span>
+                                </div>
+                            </div>
+                            <div class="quiz-meta">
+                                <span class="quiz-date">Completed: December 2023</span>
+                                <span class="quiz-score">Score: 90/100</span>
+                            </div>
+                        </div>
+                    </article>
+                
                     <article class="quiz-item">
                         <div class="quiz-header">
                             <h3>Database Management</h3>
                             <span class="quiz-grade">Grade: A</span>
                         </div>
                         <div class="quiz-content">
-                            <p class="quiz-description">Evaluation of SQL fundamentals, database design, and data manipulation concepts.</p>
+                            <div class="quiz-paper-preview">
+                                <img src="../img/Xamarin.png" alt="Database Quiz Paper" class="quiz-paper-thumb">
+                                <div class="preview-overlay">
+                                  
+                                    <span>View</span>
+                                </div>
+                            </div>
                             <div class="quiz-meta">
                                 <span class="quiz-date">Completed: November 2023</span>
                                 <span class="quiz-score">Score: 88/100</span>
