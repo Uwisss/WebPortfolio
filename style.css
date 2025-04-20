@@ -880,7 +880,7 @@ h1, h2, h3, h4, h5, h6 {
 
     #quizModal #modalQuizImage {
         max-width: 90%;
-        max-height: 80vh;
+    max-height: 80vh;
     }
 }
 
@@ -2830,34 +2830,32 @@ a:hover {
 .project-item:nth-child(n+6),
 .quiz-item:nth-child(n+6) { transition-delay: 0.6s; }
 
-/* Enhanced Floating Social Bar */
+/* Enhanced Floating Social Bar with Load Effect */
 .social-floating-bar {
     position: fixed;
     left: 20px;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateX(-50px) translateY(-50%);
     display: flex;
     flex-direction: column;
     gap: 15px;
     z-index: 999;
     padding: 15px 10px;
     border-radius: 30px;
-    transition: all 0.3s ease;
-}
-
-/* Light theme (default) */
-.social-floating-bar {
+    transition: all 0.3s ease-out;
+    opacity: 0;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(8px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Dark theme (when overlapping dark sections) */
-.social-floating-bar.dark-theme {
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+/* Light theme (default) */
+.social-floating-bar.loaded {
+    opacity: 1;
+    transform: translateX(0) translateY(-50%);
 }
 
+/* Social Icons Load Animation */
 .social-floating-bar a {
     display: flex;
     align-items: center;
@@ -2868,71 +2866,79 @@ a:hover {
     background: var(--primary-color);
     color: var(--light-color);
     font-size: 1.2rem;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-}
-
-.social-floating-bar a::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(255, 255, 255, 0.1);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transform: translateX(-20px);
 }
 
-.social-floating-bar.dark-theme a::after {
+.social-floating-bar.loaded a {
     opacity: 1;
+    transform: translateX(0);
 }
 
 .social-floating-bar a:hover {
-    transform: translateY(-3px);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Enhanced hover effects */
-.social-floating-bar a:hover::before {
-    opacity: 1;
-    visibility: visible;
-    left: 130%;
-    background: var(--primary-color);
-    color: var(--light-color);
+/* Social Media Brand Colors on Hover with smooth transition */
+.social-floating-bar .facebook {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.social-floating-bar .facebook:hover { 
+    background: #1877f2;
+    transform: translateY(-5px);
 }
 
-/* Responsive Adjustments */
-@media (max-width: 1024px) {
-    .social-floating-bar {
-        left: 15px;
-        padding: 12px 8px;
-    }
-
-    .social-floating-bar a {
-        width: 35px;
-        height: 35px;
-        font-size: 1.1rem;
-    }
+.social-floating-bar .instagram {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.social-floating-bar .instagram:hover { 
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    transform: translateY(-5px);
 }
 
-@media (max-width: 768px) {
-    .social-floating-bar {
-        left: 10px;
-        padding: 10px 6px;
-    }
-
-    .social-floating-bar a {
-        width: 32px;
-        height: 32px;
-        font-size: 1rem;
-    }
+.social-floating-bar .tiktok {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.social-floating-bar .tiktok:hover { 
+    background: #000000;
+    transform: translateY(-5px);
 }
 
+.social-floating-bar .github {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.social-floating-bar .github:hover { 
+    background: #333333;
+    transform: translateY(-5px);
+}
+
+.social-floating-bar .linkedin {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.social-floating-bar .linkedin:hover { 
+    background: #0077b5;
+    transform: translateY(-5px);
+}
+
+/* Staggered animation delays for icons with smoother timing */
+.social-floating-bar a:nth-child(1) { transition-delay: 0.1s; }
+.social-floating-bar a:nth-child(2) { transition-delay: 0.15s; }
+.social-floating-bar a:nth-child(3) { transition-delay: 0.2s; }
+.social-floating-bar a:nth-child(4) { transition-delay: 0.25s; }
+.social-floating-bar a:nth-child(5) { transition-delay: 0.3s; }
+
+/* Mobile Responsive Adjustments */
 @media (max-width: 480px) {
     .social-floating-bar {
         left: 0;
         right: 0;
         top: auto;
         bottom: 20px;
-        transform: none;
+        transform: translateY(50px);
         flex-direction: row;
         justify-content: center;
         border-radius: 20px;
@@ -2940,22 +2946,30 @@ a:hover {
         margin: 0 auto;
         padding: 8px 15px;
         gap: 12px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .social-floating-bar.loaded {
+        transform: translateY(0);
+    }
+
+    .social-floating-bar a:hover {
+        transform: translateY(-3px);
     }
 
     .social-floating-bar.mobile-hidden {
         transform: translateY(100px);
         opacity: 0;
         pointer-events: none;
-    }
-
-    .social-floating-bar a::before {
-        display: none;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 }
 
-/* Hide when footer is visible */
+/* Hide when footer is visible with smooth transition */
 .social-floating-bar.footer-visible {
     opacity: 0;
     transform: translateY(20px);
     pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
