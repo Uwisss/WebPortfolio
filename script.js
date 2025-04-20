@@ -1,6 +1,6 @@
 // Hero Title Animation
 document.addEventListener('DOMContentLoaded', () => {
-    const heroTitle = document.querySelector('.hero-title');
+const heroTitle = document.querySelector('.hero-title');
     if (heroTitle) {
         const texts = [
             heroTitle.getAttribute('data-text-1'),
@@ -383,3 +383,92 @@ function centerModalImage(modalImg) {
         }
     }
 }
+
+// Floating Social Bar Functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const socialBar = document.querySelector('.social-floating-bar');
+    const footer = document.querySelector('.site-footer');
+    let lastScrollTop = 0;
+    let scrollTimeout;
+
+    function updateSocialBarTheme() {
+        if (!socialBar) return;
+
+        const socialBarRect = socialBar.getBoundingClientRect();
+        const sections = document.querySelectorAll('section, footer');
+        let isDarkBackground = false;
+
+        sections.forEach(section => {
+            const sectionRect = section.getBoundingClientRect();
+            const backgroundColor = window.getComputedStyle(section).backgroundColor;
+            
+            // Check if social bar overlaps with this section
+            if (socialBarRect.top < sectionRect.bottom && 
+                socialBarRect.bottom > sectionRect.top) {
+                // Convert backgroundColor to RGB values
+                const rgb = backgroundColor.match(/\d+/g);
+                if (rgb) {
+                    // Calculate relative luminance
+                    const luminance = (0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2]) / 255;
+                    if (luminance < 0.5) {
+                        isDarkBackground = true;
+                    }
+                }
+            }
+        });
+
+        socialBar.classList.toggle('dark-theme', isDarkBackground);
+    }
+
+    function handleScroll() {
+        if (!socialBar || !footer) return;
+
+        const currentScroll = window.pageYOffset;
+        const footerRect = footer.getBoundingClientRect();
+        const isMobile = window.innerWidth <= 480;
+
+        // Handle footer visibility
+        if (footerRect.top <= window.innerHeight) {
+            socialBar.classList.add('footer-visible');
+        } else {
+            socialBar.classList.remove('footer-visible');
+        }
+
+        // Handle mobile scroll behavior
+        if (isMobile) {
+            if (currentScroll > lastScrollTop) {
+                // Scrolling down
+                socialBar.classList.add('mobile-hidden');
+            } else {
+                // Scrolling up
+                socialBar.classList.remove('mobile-hidden');
+            }
+        }
+
+        lastScrollTop = currentScroll;
+
+        // Update theme with throttling
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(updateSocialBarTheme, 100);
+    }
+
+    // Initial theme check
+    updateSocialBarTheme();
+
+    // Add scroll event listener with passive option for better performance
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', updateSocialBarTheme, { passive: true });
+
+    // Intersection Observer for smoother transitions
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                updateSocialBarTheme();
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section, footer').forEach(section => {
+        observer.observe(section);
+    });
+});
