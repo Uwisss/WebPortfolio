@@ -1,23 +1,230 @@
 /* CSS Reset and Variables */
 :root {
-    --primary-color: #1f3750;
-    --secondary-color: #a78744;
-    --background-color: #f5f7fa;
-    --text-color: #2c3e50;
-    --light-color: #ffffff;
-    --section-bg-1: #ffffff;
-    --section-bg-2: #f8fafc;
-    --section-bg-3: #f5f7fa;
-    --gradient-1: linear-gradient(135deg, #f5f7fa 0%, #f8fafc 100%);
-    --gradient-2: linear-gradient(45deg, rgba(31, 55, 80, 0.02) 0%, rgba(167, 135, 68, 0.02) 100%);
-    --transition: all 0.3s ease;
+    /* Primary Colors */
+    --primary-color: #2d3250;    /* Deep Navy Blue */
+    --secondary-color: #7c8ac7;  /* Soft Periwinkle */
+    --accent-color: #e6c068;     /* Warm Gold */
+    --background-color: #f8faff;  /* Cool White */
+    --text-color: #2d3250;       /* Deep Navy */
+    --light-color: #ffffff;      /* Pure White */
+    
+    /* Section Backgrounds */
+    --section-bg-1: #ffffff;     /* Pure White */
+    --section-bg-2: #f3f6ff;     /* Soft Blue White */
+    --section-bg-3: #eef2ff;     /* Light Periwinkle */
+    
+    /* Gradients */
+    --gradient-1: linear-gradient(135deg, var(--background-color) 0%, #ffffff 100%);
+    --gradient-2: linear-gradient(45deg, rgba(45, 50, 80, 0.02) 0%, rgba(124, 138, 199, 0.02) 100%);
+
+    /* Keep all existing layout variables */
     --container-width: 1400px;
     --header-height: 80px;
     --header-height-mobile: 60px;
     --section-spacing: 4rem;
     --border-radius: 12px;
-    --box-shadow: 0 4px 20px rgba(31, 55, 80, 0.06);
-    --card-shadow: 0 2px 15px rgba(31, 55, 80, 0.04);
+    --box-shadow: 0 4px 20px rgba(45, 50, 80, 0.06);
+    --card-shadow: 0 2px 15px rgba(45, 50, 80, 0.04);
+    --transition: all 0.3s ease;
+}
+
+/* Dark Mode Colors */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: #7c8ac7;    /* Lighter in dark mode */
+        --secondary-color: #e6c068;   /* Accent becomes secondary */
+        --background-color: #1a1d2d;  /* Dark Navy */
+        --text-color: #e6e9f5;        /* Light Text */
+        --light-color: #242838;       /* Dark Surface */
+        --section-bg-1: #242838;      /* Dark Surface */
+        --section-bg-2: #2d3250;      /* Slightly Lighter */
+        --section-bg-3: #353b5e;      /* Accent Surface */
+        
+        /* Adjust gradients for dark mode */
+        --gradient-1: linear-gradient(135deg, var(--background-color) 0%, #242838 100%);
+        --gradient-2: linear-gradient(45deg, rgba(124, 138, 199, 0.05) 0%, rgba(230, 192, 104, 0.05) 100%);
+    }
+}
+
+/* Base Styles with New Color Scheme */
+body {
+    background-color: var(--background-color);
+    background-image: var(--gradient-1);
+    color: var(--text-color);
+}
+
+/* Header Styling */
+.site-header {
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-md);
+}
+
+.main-nav a {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--accent-color);
+}
+
+/* Hero Section */
+.hero-name {
+    color: var(--primary-color);
+    text-shadow: var(--shadow-sm);
+}
+
+.hero-title {
+    color: var(--secondary-color);
+}
+
+.hero-subtitle {
+    color: var(--text-color-light);
+}
+
+/* Section Styling */
+.section-title {
+    color: var(--primary-color);
+}
+
+.section-title::after {
+    background: var(--gradient-secondary);
+}
+
+/* Card Styling */
+.skill-category,
+.certification-item,
+.project-item,
+.quiz-item {
+    background: var(--section-bg-1);
+    border: 1px solid rgba(124, 138, 199, 0.1);
+    box-shadow: var(--shadow-sm);
+}
+
+.skill-category:hover,
+.certification-item:hover,
+.project-item:hover,
+.quiz-item:hover {
+    border-color: var(--secondary-color);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Skills Section */
+.skills-section {
+    background: var(--section-bg-2);
+}
+
+.skill-progress {
+    background-color: var(--section-bg-3);
+}
+
+.progress-bar {
+    background: var(--gradient-secondary);
+}
+
+/* Button Styling */
+.cta-button {
+    background: var(--gradient-primary);
+    color: #ffffff;
+    box-shadow: var(--shadow-md);
+}
+
+.cta-button:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.cta-button.secondary {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.cta-button.secondary:hover {
+    background: var(--primary-color);
+    color: #ffffff;
+}
+
+/* Footer Styling */
+.site-footer {
+    background: var(--gradient-primary);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.footer-title {
+    color: #ffffff;
+}
+
+.footer-title::after {
+    background: var(--accent-color);
+}
+
+/* Social Media Colors */
+.social-floating-bar a {
+    background: var(--gradient-primary);
+    color: #ffffff;
+}
+
+.social-floating-bar .facebook:hover { background: #1877f2; }
+.social-floating-bar .instagram:hover { 
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+.social-floating-bar .linkedin:hover { background: #0077b5; }
+.social-floating-bar .github:hover { background: #333333; }
+.social-floating-bar .twitter:hover { background: #1da1f2; }
+
+/* Tech Tags */
+.tech-tag {
+    background: var(--gradient-secondary);
+    color: #ffffff;
+    font-size: 0.85rem;
+    padding: 0.4em 1em;
+    border-radius: 20px;
+}
+
+/* Modal Styling */
+.modal {
+    background: rgba(45, 50, 80, 0.8);
+    backdrop-filter: blur(8px);
+}
+
+.modal__container {
+    background: var(--section-bg-1);
+    box-shadow: var(--shadow-xl);
+}
+
+.modal__close {
+    color: var(--text-color-light);
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #1a1d2d;
+        --section-bg-1: #242838;
+        --section-bg-2: #2d3250;
+        --section-bg-3: #353b5e;
+        --text-color: #e6e9f5;
+        --text-color-light: #b4b9cc;
+        --text-color-lighter: #8890a6;
+    }
+
+    .skill-category,
+    .certification-item,
+    .project-item,
+    .quiz-item {
+        border-color: rgba(124, 138, 199, 0.15);
+    }
+
+    .cta-button.secondary {
+        border-color: var(--secondary-color);
+        color: var(--secondary-color);
+    }
+
+    .cta-button.secondary:hover {
+        background: var(--secondary-color);
+        color: var(--background-color);
+    }
 }
 
 /* Base Styles */
