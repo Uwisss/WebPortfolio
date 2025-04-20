@@ -344,6 +344,106 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Call animation function
     animateContent();
+
+    // Certification Popup Functionality
+    function initCertificationPopups() {
+        const certItems = document.querySelectorAll('.certification-item');
+        const popups = document.querySelectorAll('.certification-popup');
+        const closeButtons = document.querySelectorAll('.popup-close');
+
+        // Add click event to certification items
+        certItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                popups[index].classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+        });
+
+        // Close popup when clicking close button
+        closeButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const popup = button.closest('.certification-popup');
+                popup.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+            });
+        });
+
+        // Close popup when clicking outside
+        popups.forEach(popup => {
+            popup.addEventListener('click', (e) => {
+                if (e.target === popup) {
+                    popup.classList.remove('active');
+                    document.body.style.overflow = ''; // Restore scrolling
+                }
+            });
+        });
+
+        // Close popup with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                popups.forEach(popup => {
+                    popup.classList.remove('active');
+                    document.body.style.overflow = ''; // Restore scrolling
+                });
+            }
+        });
+    }
+
+    // Enhanced Progress Bar Animation
+    function initProgressBars() {
+        const progressBars = document.querySelectorAll('.progress-bar');
+        const skillsSection = document.querySelector('.skills-section');
+        let animated = false; // Flag to track if animation has occurred
+
+        function animateProgressBars() {
+            if (animated) return; // Skip if already animated
+            
+            progressBars.forEach(bar => {
+                const percent = bar.getAttribute('data-percent');
+                bar.style.width = '0';
+                bar.querySelector('.percent').style.opacity = '0';
+                
+                // Trigger animation
+                setTimeout(() => {
+                    bar.style.width = percent + '%';
+                    bar.querySelector('.percent').style.opacity = '1';
+                }, 200);
+            });
+            animated = true; // Set flag to true after animation
+        }
+
+        function resetProgressBars() {
+            progressBars.forEach(bar => {
+                bar.style.width = '0';
+                bar.querySelector('.percent').style.opacity = '0';
+            });
+            animated = false; // Reset animation flag
+        }
+
+        // Create Intersection Observer for progress bars
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateProgressBars();
+                } else {
+                    resetProgressBars();
+                }
+            });
+        }, {
+            threshold: 0.2, // Trigger when 20% of the section is visible
+            rootMargin: '-50px' // Add some margin to delay trigger
+        });
+
+        // Start observing the skills section
+        if (skillsSection) {
+            observer.observe(skillsSection);
+        }
+    }
+
+    // Initialize all functionalities
+    initCertificationPopups();
+    initProgressBars();
 });
 
 // Function to center the modal image
@@ -390,6 +490,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const footer = document.querySelector('.site-footer');
     let lastScrollTop = 0;
     let scrollTimeout;
+
+    // Add load effect
+    if (socialBar) {
+        // Initial state setup
+        socialBar.style.opacity = '0';
+        socialBar.style.transform = window.innerWidth <= 480 
+            ? 'translateY(50px)' 
+            : 'translateX(-50px) translateY(-50%)';
+
+        // Trigger load animation after a short delay
+        setTimeout(() => {
+            socialBar.classList.add('loaded');
+            socialBar.style.opacity = ''; // Remove inline styles
+            socialBar.style.transform = ''; // Remove inline styles
+        }, 500); // Delay the animation for better visual effect
+    }
 
     function updateSocialBarTheme() {
         if (!socialBar) return;
