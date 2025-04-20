@@ -2829,3 +2829,133 @@ a:hover {
 .quiz-item:nth-child(5) { transition-delay: 0.5s; }
 .project-item:nth-child(n+6),
 .quiz-item:nth-child(n+6) { transition-delay: 0.6s; }
+
+/* Enhanced Floating Social Bar */
+.social-floating-bar {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 999;
+    padding: 15px 10px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+/* Light theme (default) */
+.social-floating-bar {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark theme (when overlapping dark sections) */
+.social-floating-bar.dark-theme {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.social-floating-bar a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: var(--light-color);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.social-floating-bar a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.social-floating-bar.dark-theme a::after {
+    opacity: 1;
+}
+
+.social-floating-bar a:hover {
+    transform: translateY(-3px);
+}
+
+/* Enhanced hover effects */
+.social-floating-bar a:hover::before {
+    opacity: 1;
+    visibility: visible;
+    left: 130%;
+    background: var(--primary-color);
+    color: var(--light-color);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .social-floating-bar {
+        left: 15px;
+        padding: 12px 8px;
+    }
+
+    .social-floating-bar a {
+        width: 35px;
+        height: 35px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .social-floating-bar {
+        left: 10px;
+        padding: 10px 6px;
+    }
+
+    .social-floating-bar a {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .social-floating-bar {
+        left: 0;
+        right: 0;
+        top: auto;
+        bottom: 20px;
+        transform: none;
+        flex-direction: row;
+        justify-content: center;
+        border-radius: 20px;
+        width: fit-content;
+        margin: 0 auto;
+        padding: 8px 15px;
+        gap: 12px;
+    }
+
+    .social-floating-bar.mobile-hidden {
+        transform: translateY(100px);
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .social-floating-bar a::before {
+        display: none;
+    }
+}
+
+/* Hide when footer is visible */
+.social-floating-bar.footer-visible {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
