@@ -2289,7 +2289,7 @@ a:hover {
 }
 
 .download-button:hover {
-    background-color: #a78744; 
+    background-color: var(--section-bg-); 
     text-color: white;
 }
 .about-intro {
