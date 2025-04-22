@@ -278,13 +278,6 @@ section {
     background: transparent;
 }
 
-section:nth-child(even) {
-    background: var(--section-bg-2);
-}
-.contact-info {
-    background: var(--section-bg-2);
-}
-
 /* Card and Container Enhancements */
 .skill-category,
 .certification-item,
