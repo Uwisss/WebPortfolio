@@ -2297,7 +2297,7 @@ a:hover {
     max-width: min(900px, 95%);
     margin: 0 auto 5rem;
     padding: clamp(1.5rem, 5vw, 3rem);
-    background-color: var(--primary-color);
+    background-color: var(--section-bg-1);
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     animation: fadeIn 0.8s ease-out;
