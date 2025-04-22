@@ -2277,7 +2277,20 @@ a:hover {
     max-width: min(1200px, 90%);
     margin: 0 auto;
 }
+.download-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: var(--light-color); 
+    color: white; 
+    text-decoration: none; 
+    border-radius: 5px;
+    transition: background-color 0.3s ease; 
+}
 
+.download-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
 .about-intro {
     text-align: center;
     max-width: min(900px, 95%);
