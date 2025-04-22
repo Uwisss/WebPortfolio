@@ -2279,9 +2279,9 @@ a:hover {
 }
 .download-button {
     display: inline-block;
-    margin-top: 10px;
+    margin-top: 15px;
     padding: 10px 20px;
-    background-color: var(--light-color); 
+    background-color: var(--primary-color); 
     color: white; 
     text-decoration: none; 
     border-radius: 5px;
@@ -2289,7 +2289,8 @@ a:hover {
 }
 
 .download-button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #a78744; 
+    text-color: white;
 }
 .about-intro {
     text-align: center;
