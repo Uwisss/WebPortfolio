@@ -2290,7 +2290,11 @@ a:hover {
 
 .download-button:hover {
     background-color: var(--section-bg-2); 
+<<<<<<< Updated upstream
     text-color: white;
+=======
+ 
+>>>>>>> Stashed changes
 }
 .about-intro {
     text-align: center;
@@ -2555,7 +2559,11 @@ a:hover {
 
 .section-title {
     text-align: center;
+<<<<<<< Updated upstream
     margin-top: 5rem;
+=======
+    margin-top: 0.5rem;
+>>>>>>> Stashed changes
     margin-bottom: 2rem;
     position: relative;
 }
@@ -3365,5 +3373,9 @@ a:hover {
     transform: translateY(20px);
     pointer-events: none;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+<<<<<<< Updated upstream
 }
 
+=======
+}
+>>>>>>> Stashed changes
