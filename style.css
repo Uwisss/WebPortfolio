@@ -1,23 +1,20 @@
-/* CSS Reset and Variables */
+/* CSS Variables */
 :root {
-    /* Primary Colors */
-    --primary-color: #2d3250;    /* Deep Navy Blue */
-    --secondary-color: #7c8ac7;  /* Soft Periwinkle */
-    --accent-color: #e6c068;     /* Warm Gold */
-    --background-color: #f8faff;  /* Cool White */
-    --text-color: #2d3250;       /* Deep Navy */
-    --light-color: #ffffff;      /* Pure White */
-    
-    /* Section Backgrounds */
-    --section-bg-1: #ffffff;     /* Pure White */
-    --section-bg-2: #f3f6ff;     /* Soft Blue White */
-    --section-bg-3: #eef2ff;     /* Light Periwinkle */
+    /* Colors */
+    --primary-color: #7c8ac7;    /* Periwinkle */
+    --secondary-color: #e6c068;   /* Warm Gold */
+    --background-color: #1a1d2d;  /* Dark Navy */
+    --text-color: #e6e9f5;        /* Light Text */
+    --light-color: #242838;       /* Dark Surface */
+    --section-bg-1: #242838;      /* Dark Surface */
+    --section-bg-2: #2d3250;      /* Slightly Lighter */
+    --section-bg-3: #353b5e;      /* Accent Surface */
     
     /* Gradients */
-    --gradient-1: linear-gradient(135deg, var(--background-color) 0%, #ffffff 100%);
-    --gradient-2: linear-gradient(45deg, rgba(45, 50, 80, 0.02) 0%, rgba(124, 138, 199, 0.02) 100%);
+    --gradient-1: linear-gradient(135deg, var(--background-color) 0%, #242838 100%);
+    --gradient-2: linear-gradient(45deg, rgba(124, 138, 199, 0.05) 0%, rgba(230, 192, 104, 0.05) 100%);
 
-    /* Keep all existing layout variables */
+    /* Layout */
     --container-width: 1400px;
     --header-height: 80px;
     --header-height-mobile: 60px;
@@ -28,25 +25,7 @@
     --transition: all 0.3s ease;
 }
 
-/* Dark Mode Colors */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --primary-color: #7c8ac7;    /* Lighter in dark mode */
-        --secondary-color: #e6c068;   /* Accent becomes secondary */
-        --background-color: #1a1d2d;  /* Dark Navy */
-        --text-color: #e6e9f5;        /* Light Text */
-        --light-color: #242838;       /* Dark Surface */
-        --section-bg-1: #242838;      /* Dark Surface */
-        --section-bg-2: #2d3250;      /* Slightly Lighter */
-        --section-bg-3: #353b5e;      /* Accent Surface */
-        
-        /* Adjust gradients for dark mode */
-        --gradient-1: linear-gradient(135deg, var(--background-color) 0%, #242838 100%);
-        --gradient-2: linear-gradient(45deg, rgba(124, 138, 199, 0.05) 0%, rgba(230, 192, 104, 0.05) 100%);
-    }
-}
-
-/* Base Styles with New Color Scheme */
+/* Base Styles */
 body {
     background-color: var(--background-color);
     background-image: var(--gradient-1);
