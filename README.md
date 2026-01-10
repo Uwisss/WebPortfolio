@@ -1,152 +1,38 @@
-# Carl Luis Portfolio - React SPA
+# ????? Carl Luis Dimapilis | Portfolio
 
-A modern Single Page Application (SPA) portfolio built with React.js, converted from a multi-page HTML/CSS website.
+[![Live Demo](https://img.shields.io/badge/??_Live_Demo-Visit_Site-blue?style=for-the-badge)](https://uwisss.github.io/WebPortfolio/)
 
-## 🚀 Features
+## About Me
 
-- ⚡ **Single Page Application** - Smooth scrolling between sections
-- 🌓 **Dark/Light Theme Toggle** - Switch between themes
-- 📱 **Fully Responsive** - Works on all devices
-- 🎨 **Modern UI** - Clean and professional design
-- ✨ **Smooth Animations** - CSS transitions and keyframe animations
-- 🖼️ **Image Gallery Modal** - View project screenshots
-- 📊 **Animated Skill Bars** - Progress bars animate on scroll
+Hello! I'm **Carl Luis Dimapilis**, a passionate developer and IT student with experience in web development, mobile applications, and software engineering.
 
-## 📁 Project Structure
+?? **Education**: Bachelor of Science in Information Technology  
+?? **Location**: Philippines  
 
-```
-react-portfolio/
-├── public/
-│   ├── index.html
-│   ├── owes.jpg          # Profile image
-│   ├── DimapilisCv.pdf   # Resume
-│   └── img/              # All images
-├── src/
-│   ├── components/
-│   │   ├── Header.js
-│   │   ├── SocialFloatingBar.js
-│   │   ├── Hero.js
-│   │   ├── About.js
-│   │   ├── Skills.js
-│   │   ├── Projects.js
-│   │   ├── Quizzes.js
-│   │   ├── Certifications.js
-│   │   ├── Modal.js
-│   │   └── Footer.js
-│   ├── styles/
-│   │   └── index.css
-│   ├── App.js
-│   └── index.js
-└── package.json
-```
+## ??? Skills & Technologies
 
-## 🛠️ Getting Started
+### Programming Languages
+- C# | JavaScript | C++ | SQL
 
-### Prerequisites
-- Node.js (v14 or higher)
-- npm or yarn
+### Frameworks & Tools
+- React.js | Xamarin | .NET
+- Visual Studio | VS Code
+- SQLite | Git
 
-### Installation
+## ?? Certifications
 
-1. Navigate to the react-portfolio folder:
-```bash
-cd react-portfolio
-```
+- **Cisco Certified** - IT Essentials
+- **Introduction to Cybersecurity**
+- **Networking Basics**
 
-2. Install dependencies:
-```bash
-npm install
-```
+## ?? Connect With Me
 
-3. Copy your images to the public folder:
-```bash
-# Copy the img folder from the original project
-cp -r ../img ./public/
-# Copy profile image
-cp ../img/owes.jpg ./public/
-# Copy CV
-cp ../img/DimapilisCv.pdf ./public/
-```
+- ?? [LinkedIn](https://www.linkedin.com/in/carlluis-dimapilis-20417b272/)
+- ?? [Facebook](https://www.facebook.com/liuws07)
+- ?? Email: dimapiliscarlluis28@gmail.com
 
-4. Start the development server:
-```bash
-npm start
-```
+---
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser
+? **Feel free to explore my portfolio and reach out for collaborations!**
 
-## 🏗️ Build for Production
-
-```bash
-npm run build
-```
-
-This creates an optimized production build in the `build` folder.
-
-## 📦 Deployment
-
-### GitHub Pages
-
-1. Install gh-pages:
-```bash
-npm install gh-pages --save-dev
-```
-
-2. Add to package.json:
-```json
-{
-  "homepage": "https://yourusername.github.io/repository-name",
-  "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
-  }
-}
-```
-
-3. Deploy:
-```bash
-npm run deploy
-```
-
-## 🎨 Customization
-
-### Changing Theme Colors
-Edit the CSS variables in `src/styles/index.css`:
-
-```css
-:root[data-theme="light"] {
-  --primary-color: #1a365d;
-  --secondary-color: #4a90e2;
-  --accent-color: #f6ad55;
-  /* ... */
-}
-
-:root[data-theme="dark"] {
-  --primary-color: #8e94f2;
-  --secondary-color: #b8c0ff;
-  --accent-color: #ffd280;
-  /* ... */
-}
-```
-
-### Adding New Sections
-1. Create a new component in `src/components/`
-2. Import and add it to `App.js`
-3. Add navigation link in `Header.js`
-
-## 📝 Technologies Used
-
-- React 18
-- CSS3 with Custom Properties
-- Font Awesome Icons
-- Google Fonts (Montserrat)
-
-## 👤 Author
-
-**Carl Luis C. Dimapilis**
-- GitHub: [@Uwisss](https://github.com/Uwisss)
-- LinkedIn: [Carl Luis Dimapilis](https://www.linkedin.com/in/dimapilis-carl-luis-c-66b63631b/)
-
-## 📄 License
-
-© 2026 Carl Luis C. Dimapilis. All rights reserved.
+?? **Live Site**: [uwisss.github.io/WebPortfolio](https://uwisss.github.io/WebPortfolio/)
