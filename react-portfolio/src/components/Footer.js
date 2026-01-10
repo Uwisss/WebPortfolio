@@ -35,7 +35,7 @@ const Footer = () => {
               </a>
               <div className="contact-item">
                 <i className="fas fa-map-marker-alt"></i>
-                <span>Bulacan, Philippines</span>
+                <span>Cavite, Philippines</span>
               </div>
             </div>
           </div>

@@ -12,6 +12,11 @@ const Skills = () => {
   ];
 
   const backendSkills = [
+    { name: 'PHP', icon: 'fab fa-php', color: '#777BB4', percent: 85 },
+    { name: 'Laravel', icon: 'fab fa-laravel', color: '#FF2D20', percent: 80 },
+    { name: 'Blade', icon: 'fas fa-leaf', color: '#F9322C', percent: 80 },
+    { name: 'CodeIgniter', icon: 'fas fa-fire', color: '#EF4223', percent: 75 },
+    { name: 'Python', icon: 'fab fa-python', color: '#3776AB', percent: 80 },
     { name: 'C#', icon: 'fas fa-code', color: '#239120', percent: 88 },
     { name: 'C++', icon: 'fas fa-cogs', color: '#00599C', percent: 85 },
     { name: 'SQLite', icon: 'fas fa-database', color: '#003B57', percent: 88 },
@@ -21,7 +26,13 @@ const Skills = () => {
   const toolsSkills = [
     { name: 'VS Code', icon: 'fas fa-laptop-code', color: '#007ACC', percent: 95 },
     { name: 'Git', icon: 'fab fa-git-alt', color: '#F05032', percent: 80 },
+    { name: 'GitHub', icon: 'fab fa-github', color: '#181717', percent: 85 },
+    { name: 'Node.js', icon: 'fab fa-node-js', color: '#339933', percent: 75 },
+    { name: 'npm', icon: 'fab fa-npm', color: '#CB3837', percent: 80 },
+    { name: 'Docker', icon: 'fab fa-docker', color: '#2496ED', percent: 70 },
     { name: 'Figma', icon: 'fab fa-figma', color: '#F24E1E', percent: 70 },
+    { name: 'XAMPP', icon: 'fas fa-server', color: '#FB7A24', percent: 85 },
+    { name: 'MySQL Workbench', icon: 'fas fa-database', color: '#4479A1', percent: 80 },
     { name: 'Packet Tracer', icon: 'fas fa-network-wired', color: '#1BA0D7', percent: 85 },
   ];
 

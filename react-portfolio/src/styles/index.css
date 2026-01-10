@@ -947,6 +947,27 @@ button {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  max-height: 280px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.skill-items::-webkit-scrollbar {
+  width: 6px;
+}
+
+.skill-items::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+  border-radius: 3px;
+}
+
+.skill-items::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 3px;
+}
+
+.skill-items::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
 }
 
 .skill-item {
@@ -1599,6 +1620,7 @@ button {
   display: flex;
   align-items: center;
   gap: 1rem;
+  touch-action: pan-y pinch-zoom;
 }
 
 .modal-nav {
@@ -1612,6 +1634,10 @@ button {
   font-size: 1.25rem;
   border-radius: var(--radius-full);
   transition: all var(--transition-fast);
+  z-index: 10;
+  cursor: pointer;
+  border: none;
+  flex-shrink: 0;
 }
 
 .modal-nav:hover:not(:disabled) {
@@ -1641,6 +1667,26 @@ button {
   margin-top: 0.5rem;
   color: rgba(255, 255, 255, 0.6);
   font-size: 0.875rem;
+}
+
+.modal-dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.modal-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: all var(--transition-fast);
+}
+
+.modal-dot.active {
+  background: var(--primary);
+  transform: scale(1.2);
 }
 
 /* ============================================
@@ -2453,13 +2499,31 @@ a.contact-item:hover {
   }
 
   .modal-image {
-    max-width: 90vw;
+    max-width: 85vw;
+    max-height: 60vh;
+  }
+
+  .modal-image-container {
+    flex-direction: column;
+    gap: 0;
   }
 
   .modal-nav {
-    width: 36px;
-    height: 36px;
-    font-size: 1rem;
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+    background: rgba(0, 0, 0, 0.5);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .modal-nav-prev {
+    left: 0.5rem;
+  }
+
+  .modal-nav-next {
+    right: 0.5rem;
   }
 
   .modal-close {

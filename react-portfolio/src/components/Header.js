@@ -10,7 +10,6 @@ const Header = ({ theme, toggleTheme }) => {
     { id: 'about', label: 'About' },
     { id: 'skills', label: 'Skills' },
     { id: 'projects', label: 'Projects' },
-    { id: 'quizzes', label: 'Quizzes' },
     { id: 'certifications', label: 'Certifications' }
   ];
 
