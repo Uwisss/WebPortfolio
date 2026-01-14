@@ -1,0 +1,4 @@
+react-portfolio/node_modules/
+react-portfolio/build/
+.DS_Store
+*.log
