@@ -26,7 +26,7 @@ const Footer = () => {
       <div className="container">
         <div className="footer-main">
           <div className="footer-brand">
-            <h3 className="footer-logo">OWES</h3>
+            <h3 className="footer-logo">UWIS</h3>
             <p>Creating digital experiences with passion and precision. Based in the Philippines.</p>
             <div className="footer-contact">
               <a href="mailto:carlluis57@gmail.com" className="contact-item">

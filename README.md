@@ -1,38 +1,94 @@
-# ????? Carl Luis Dimapilis | Portfolio
+# Carl Luis Dimapilis
 
-[![Live Demo](https://img.shields.io/badge/??_Live_Demo-Visit_Site-blue?style=for-the-badge)](https://uwisss.github.io/WebPortfolio/)
+**IT Student | Web & Mobile Developer**
 
-## About Me
-
-Hello! I'm **Carl Luis Dimapilis**, a passionate developer and IT student with experience in web development, mobile applications, and software engineering.
-
-?? **Education**: Bachelor of Science in Information Technology  
-?? **Location**: Philippines  
-
-## ??? Skills & Technologies
-
-### Programming Languages
-- C# | JavaScript | C++ | SQL
-
-### Frameworks & Tools
-- React.js | Xamarin | .NET
-- Visual Studio | VS Code
-- SQLite | Git
-
-## ?? Certifications
-
-- **Cisco Certified** - IT Essentials
-- **Introduction to Cybersecurity**
-- **Networking Basics**
-
-## ?? Connect With Me
-
-- ?? [LinkedIn](https://www.linkedin.com/in/carlluis-dimapilis-20417b272/)
-- ?? [Facebook](https://www.facebook.com/liuws07)
-- ?? Email: dimapiliscarlluis28@gmail.com
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Visit_Site-0066CC?style=for-the-badge)](https://uwisss.github.io/WebPortfolio/)
 
 ---
 
-? **Feel free to explore my portfolio and reach out for collaborations!**
+## About
 
-?? **Live Site**: [uwisss.github.io/WebPortfolio](https://uwisss.github.io/WebPortfolio/)
+I'm an IT student at Cavite State University - Silang Campus with a passion for web development and creating digital solutions. I enjoy turning complex problems into simple, beautiful, and intuitive designs.
+
+**Location:** General Trias, Cavite, Philippines
+
+---
+
+## Education
+
+| Institution | Degree | Year |
+|-------------|--------|------|
+| Cavite State University - Silang Campus | BS Information Technology | 2022 - Present |
+| Luis Y. Ferrer Jr. SHS | Senior High School | 2020 - 2022 |
+| Our Lady of Remedios Montessori | Junior High School | 2016 - 2020 |
+
+---
+
+## Technical Skills
+
+**Frontend**
+- HTML5, CSS3, JavaScript, React
+
+**Backend**
+- PHP, Laravel, CodeIgniter, Python, C#, C++
+
+**Mobile Development**
+- Xamarin
+
+**Databases**
+- SQLite, MySQL
+
+**Tools**
+- VS Code, Git, GitHub, Docker, Figma, XAMPP, Packet Tracer
+
+---
+
+## Featured Projects
+
+| Project | Description | Technologies |
+|---------|-------------|--------------|
+| **CodeXplore** | Mobile coding companion app with interactive programming lessons and quiz games | C#, Xamarin, SQLite |
+| **HxH WebFandom** | Responsive fan website featuring character profiles and community features | HTML, CSS, JavaScript |
+| **Network Infrastructure** | Enterprise network design with VLAN segmentation and routing protocols | Cisco Packet Tracer |
+
+---
+
+## Certifications
+
+| Certification | Issuer | Year |
+|---------------|--------|------|
+| Networking Basics | Cisco | 2024 |
+| Introduction To Cisco | Cisco | 2024 |
+
+---
+
+## Contact
+
+| | |
+|---|---|
+| **Email** | carlluis57@gmail.com |
+| **GitHub** | [Uwisss](https://github.com/Uwisss) |
+| **LinkedIn** | [Carl Luis Dimapilis](https://www.linkedin.com/in/dimapilis-carl-luis-c-66b63631b/) |
+
+---
+
+## Getting Started
+
+```bash
+git clone https://github.com/uwisss/WebPortfolio.git
+cd WebPortfolio/react-portfolio
+npm install
+npm start
+```
+
+---
+
+## Built With
+
+- React 18.2
+- Framer Motion
+- Font Awesome
+
+---
+
+**[View Live Portfolio](https://uwisss.github.io/WebPortfolio/)**

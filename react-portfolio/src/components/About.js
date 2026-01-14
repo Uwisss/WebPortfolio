@@ -56,7 +56,7 @@ const About = () => {
                 When I'm not coding, you'll find me exploring new technologies, watching movies, 
                 or enjoying a good cup of coffee.
               </p>
-              <a href={`${process.env.PUBLIC_URL}/DimapilisCv.pdf`} target="_blank" rel="noopener noreferrer" className="download-cv" download>
+              <a href={`${process.env.PUBLIC_URL}/DIMAPILIS_CARL_LUIS_CV.pdf`} target="_blank" rel="noopener noreferrer" className="download-cv" download>
                 <i className="fas fa-download"></i>
                 <span>Download CV</span>
               </a>
